@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ผลลัพธ์ค่าห้องเช่า</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>ผลลัพธ์ค่าห้องเช่า</h1>
+    <div class="result-container">
+        <p>ค่าห้องเช่า: {{ room_rent }} บาท</p>
+
+        <div class="section-container">
+            <p><strong>ส่วนของค่าไฟ</strong></p>
+            <p>มิเตอร์ไฟเดือนนี้: {{ meter_electricity_this_month }}</p>
+            <p>มิเตอร์ไฟเดือนที่แล้ว: {{ meter_electricity_last_month }}</p>
+            <p>มิเตอร์ไฟที่ใช้: {{ meter_electricity_used }} หน่วย</p>
+            <p>รวมค่าไฟ: {{ electricity_cost }} บาท</p>
+        </div>
+
+        <div class="section-container">
+            <p><strong>ส่วนของค่าน้ำ</strong></p>
+            <p>มิเตอร์น้ำเดือนนี้: {{ meter_water_this_month }}</p>
+            <p>มิเตอร์น้ำเดือนที่แล้ว: {{ meter_water_last_month }}</p>
+            <p>มิเตอร์น้ำที่ใช้: {{ meter_water_used }} หน่วย</p>
+            <p>รวมค่าน้ำ: {{ water_cost }} บาท</p>
+        </div>
+
+        <p>ค่าส่วนกลาง: {{ common_fee }} บาท</p>
+        <p>ยอดรวมค่าห้องที่ต้องจ่าย: {{ total_amount }} บาท</p>
+    </div>
+    
+    <a href="/">กลับไปยังฟอร์ม</a>
+</body>
+</html>

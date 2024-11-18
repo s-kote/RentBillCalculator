@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ค่าห้องเช่า</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>กรอกข้อมูลค่าใช้จ่าย</h1>
+    <form method="POST">
+        <label>ค่าห้องเช่า: <input type="number" name="room_rent" required></label><br>
+        
+        <label>ค่าส่วนกลาง:</label>
+        <select id="common_fee_select" name="common_fee_select" required onchange="updateCommonFee()">
+            <option value="20">20 บาท</option>
+            <option value="30">30 บาท</option>
+            <option value="custom">กรอกเอง</option>
+        </select>
+        <input type="number" id="common_fee_input" name="common_fee" style="display:none;" placeholder="กรอกค่าส่วนกลางใหม่"><br>
+
+        <label>อัตราค่าไฟฟ้า (บาท/หน่วย):</label>
+        <select id="electricity_rate_select" name="electricity_rate_select" required onchange="updateElectricityRate()">
+            <option value="7">7 บาท</option>
+            <option value="8">8 บาท</option>
+            <option value="custom">กรอกเอง</option>
+        </select>
+        <input type="number" id="electricity_rate_input" name="electricity_rate" style="display:none;" placeholder="กรอกอัตราค่าไฟฟ้าใหม่"><br>
+
+        <label>อัตราค่าน้ำ (บาท/หน่วย):</label>
+        <select id="water_rate_select" name="water_rate_select" required onchange="updateWaterRate()">
+            <option value="18">18 บาท</option>
+            <option value="custom">กรอกเอง</option>
+        </select>
+        <input type="number" id="water_rate_input" name="water_rate" style="display:none;" placeholder="กรอกอัตราค่าน้ำใหม่"><br>
+
+        <label>มิเตอร์ไฟเดือนที่แล้ว: <input type="number" name="meter_electricity_last_month" required></label><br>
+        <label>มิเตอร์ไฟเดือนนี้: <input type="number" name="meter_electricity_this_month" required></label><br>
+        <label>มิเตอร์น้ำเดือนที่แล้ว: <input type="number" name="meter_water_last_month" required></label><br>
+        <label>มิเตอร์น้ำเดือนนี้: <input type="number" name="meter_water_this_month" required></label><br>
+        
+        <button type="submit">ส่งข้อมูล</button>
+    </form>
+
+    <script>
+        function updateCommonFee() {
+            const select = document.getElementById('common_fee_select');
+            const input = document.getElementById('common_fee_input');
+            if (select.value === 'custom') {
+                input.style.display = 'block';
+                input.required = true;
+            } else {
+                input.style.display = 'none';
+                input.required = false;
+                input.value = '';
+            }
+        }
+
+        function updateElectricityRate() {
+            const select = document.getElementById('electricity_rate_select');
+            const input = document.getElementById('electricity_rate_input');
+            if (select.value === 'custom') {
+                input.style.display = 'block';
+                input.required = true;
+            } else {
+                input.style.display = 'none';
+                input.required = false;
+                input.value = '';
+            }
+        }
+
+        function updateWaterRate() {
+            const select = document.getElementById('water_rate_select');
+            const input = document.getElementById('water_rate_input');
+            if (select.value === 'custom') {
+                input.style.display = 'block';
+                input.required = true;
+            } else {
+                input.style.display = 'none';
+                input.required = false;
+                input.value = '';
+            }
+        }
+    </script>
+</body>
+</html>
